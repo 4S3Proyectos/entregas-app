@@ -12,7 +12,7 @@ class OrdersProvider {
   String _api = '/api';
   late BuildContext context;
 
-  Future init(BuildContext context) async{
+  Future init(BuildContext context) async {
     this.context = context;
   }
 
@@ -20,15 +20,13 @@ class OrdersProvider {
     try {
       late Uri url;
       // print('SESION TOKEN: ${sessionUser.sessionToken}');
-      if(status == 'TERMINADO'){
+      if (status == 'TERMINADO') {
         url = Uri.http(_url, '$_api/ObtenerTerminados');
-      }else{
+      } else {
         url = Uri.http(_url, '$_api/ObtenerEntrega');
       }
       log(url.toString());
-      Map<String, String> headers = {
-        'Content-type': 'application/json'
-      };
+      Map<String, String> headers = {'Content-type': 'application/json'};
       final res = await http.get(url, headers: headers);
 
       if (res.statusCode != 201 && res.statusCode != 200) {
@@ -49,21 +47,20 @@ class OrdersProvider {
       return [];
     }
   }
-Future<List<Order>> putPedido(String status, int idPedido) async {
+
+  Future<List<Order>> putPedido(String status, int idPedido) async {
     try {
       late Uri url;
       // print('SESION TOKEN: ${sessionUser.sessionToken}');
-      if(status == 'TERMINADO'){
+      if (status == 'TERMINADO') {
         url = Uri.http(_url, '$_api/UpdateTerminados');
-      }else{
+      } else {
         url = Uri.http(_url, '$_api/UpdateEntrega');
       }
       log(url.toString());
-      Map<String, String> headers = {
-        'Content-type': 'application/json'
-      };
+      Map<String, String> headers = {'Content-type': 'application/json'};
       String bodyParams = json.encode({'idLineaPedido': idPedido});
-      
+
       final res = await http.post(url, headers: headers, body: bodyParams);
 
       if (res.statusCode != 201 && res.statusCode != 200) {
@@ -84,5 +81,4 @@ Future<List<Order>> putPedido(String status, int idPedido) async {
       return [];
     }
   }
-
 }

@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:entregas_app/utils/shared_pref.dart';
 
 class EntregasListController {
-
   late BuildContext context;
   SharedPref _sharedPref = new SharedPref();
   GlobalKey<ScaffoldState> key = new GlobalKey<ScaffoldState>();
@@ -29,17 +28,16 @@ class EntregasListController {
 
   Future<List<Order>> getOrders(String status) async {
     var result = await _ordersProvider.getByStatus(status);
-    refresh();
+    // refresh();
     return result;
-    
   }
 
   putPedido(String status, int idPedido) async {
     LoadingDialog.showLoadingDialog(context, "Actualizando...");
+    print(idPedido);
     var result = await _ordersProvider.putPedido(status, idPedido);
     refresh();
     LoadingDialog.hideLoadingDialog(context);
     return result;
   }
-  
 }

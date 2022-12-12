@@ -11,7 +11,7 @@ class LoginController {
   TextEditingController passwordController = new TextEditingController();
 
   UsersProvider usersProvider = new UsersProvider();
-  
+
   SharedPref _sharedPref = new SharedPref();
   late ProgressDialog _progressDialog;
 
@@ -22,7 +22,7 @@ class LoginController {
     // passwordController.text = '123';
     // User user = User.fromJson(await _sharedPref.read('user') ?? {});
     _progressDialog = ProgressDialog(context: context);
-    
+
     // Navigator.pushNamedAndRemoveUntil(context, 'roles', (route) => false);
 
     // print('Usuario: ${user.toJson()}');
@@ -54,19 +54,21 @@ class LoginController {
       print('Respuesta: ${responseApi.toJson()}');
 
       if (responseApi.success) {
-      //   // User user = User.fromJson(responseApi.data);
-      //   _sharedPref.save('responseApi', responseApi.toJson());
+        //   // User user = User.fromJson(responseApi.data);
+        //   _sharedPref.save('responseApi', responseApi.toJson());
 
         // await pushNotificationsProvider.saveToken(user.id, user.sessionToken);
 
         print('USUARIO LOGEADO: ${responseApi.toJson()}');
         if (responseApi != '0') {
-          Navigator.pushNamedAndRemoveUntil(context, 'listado', (route) => false);
+          Navigator.pushNamedAndRemoveUntil(
+              context, 'listado', (route) => false);
         } else {
-        LoadingDialog.hideLoadingDialog(context);
-        MySnackbar.show(context, responseApi.message);
+          LoadingDialog.hideLoadingDialog(context);
+          MySnackbar.show(context, responseApi.message);
           // ignore: use_build_context_synchronously
-          Navigator.pushNamedAndRemoveUntil(context, 'listado', (route) => false);
+          Navigator.pushNamedAndRemoveUntil(
+              context, 'listado', (route) => false);
         }
       } else {
         LoadingDialog.hideLoadingDialog(context);
