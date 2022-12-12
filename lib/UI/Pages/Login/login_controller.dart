@@ -18,8 +18,8 @@ class LoginController {
   Future init(BuildContext context) async {
     this.context = context;
     // await usersProvider.init(context);
-    phoneController.text = 'Fausto@gmail.com';
-    passwordController.text = '1234';
+    // phoneController.text = 'Fausto@gmail.com';
+    // passwordController.text = '1234';
     // User user = User.fromJson(await _sharedPref.read('user') ?? {});
     _progressDialog = ProgressDialog(context: context);
     

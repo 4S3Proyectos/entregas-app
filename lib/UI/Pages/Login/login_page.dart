@@ -151,7 +151,7 @@ class _LoginPageState extends State<LoginPage> {
       ),
       child: TextField(
         controller: _con.phoneController,
-        keyboardType: TextInputType.phone,
+        keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
           hintText: 'Celular',
           border: InputBorder.none,
