@@ -19,7 +19,7 @@ class LoginController {
     this.context = context;
     // await usersProvider.init(context);
     // phoneController.text = 'Fausto@gmail.com';
-    // passwordController.text = '1234';
+    // passwordController.text = '123';
     // User user = User.fromJson(await _sharedPref.read('user') ?? {});
     _progressDialog = ProgressDialog(context: context);
     

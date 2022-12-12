@@ -28,7 +28,10 @@ class EntregasListController {
   }
 
   Future<List<Order>> getOrders(String status) async {
-    return await _ordersProvider.getByStatus(status);
+    var result = await _ordersProvider.getByStatus(status);
+    refresh();
+    return result;
+    
   }
 
   putPedido(String status, int idPedido) async {
